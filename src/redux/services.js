@@ -22,7 +22,7 @@ export const delAccountsService = async action => {
   let result = await deleteById(action.id);
   return result;
 };
-
+//comment
 const deleteById = id => {
   return new Promise((resolve, reject) => {
     axios.delete(`${mainUrl}/${id}`).then(response => {
