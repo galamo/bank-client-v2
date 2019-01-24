@@ -26,6 +26,9 @@ export default class Header extends Component {
             <Navbar.Brand>
               <Link to="/add-account"> Add New Account </Link>
             </Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/login"> Login </Link>
+            </Navbar.Brand>
           </Navbar.Header>
         </Navbar>
       </div>

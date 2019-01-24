@@ -14,6 +14,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getAccounts } from "./redux/actions";
+import Login from "./components/login/login";
 
 class App extends Component {
   constructor(props) {
@@ -26,9 +27,7 @@ class App extends Component {
       sb_status: nextProps.snackBarStatus || false
     });
   }
-  componentDidMount() {
-   
-  }
+  componentDidMount() {}
   render() {
     return (
       <BrowserRouter>
@@ -54,10 +53,11 @@ class App extends Component {
                 path="/account/:id"
                 component={Account}
               />
+              <Route key="login" exact={true} path="/login" component={Login} />
               <Redirect from="/" to="/account" />
             </Switch>
           </div>
-          <Snackbar 
+          <Snackbar
             onClose={() => {
               this.setState({
                 sb_status: false

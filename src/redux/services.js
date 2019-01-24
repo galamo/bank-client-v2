@@ -8,6 +8,8 @@ export const getAccountsService = async action => {
 //er
 const getAccounts = action => {
   return new Promise((resolve, reject) => {
+    let session = localStorage.getItem("session");
+    console.log(session);
     axios
       .get(`${mainUrl}/${action.skip}/${action.take}/${action.sort}`, {
         withCredentials: true
