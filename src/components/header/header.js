@@ -3,7 +3,7 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
 import { MenuItem, Navbar, Nav, NavItem } from "react-bootstrap";
-
+import axios from "axios";
 export default class Header extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +31,20 @@ export default class Header extends Component {
               <Link
                 to="/login"
                 onClick={() => {
-                  localStorage.clear();
+                  axios
+                    .post("http://localhost:2200/auth/logout", {
+                      method: "POST",
+                      headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                      }
+                    })
+                    .then(result => {
+                      return result.json();
+                    })
+                    .then(result => {
+                      localStorage.clear();
+                    });
                 }}
               >
                 {" "}

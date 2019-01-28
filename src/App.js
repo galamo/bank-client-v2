@@ -17,6 +17,7 @@ import { getAccounts } from "./redux/actions";
 import Login from "./components/login/login";
 import Home from "./components/home/home";
 import { homedir } from "os";
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -34,7 +35,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-         
           <div />
           <div>
             <Switch>
