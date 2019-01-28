@@ -18,16 +18,25 @@ export default class Header extends Component {
               <h1>BankApp</h1>
             </Navbar.Brand>
             <Navbar.Brand>
-              <Link to="/accounts"> Accounts </Link>
+              <Link to="/home/accounts"> Accounts </Link>
             </Navbar.Brand>
             <Navbar.Brand>
-              <Link to="/bank-details"> Bank </Link>
+              <Link to="/home/bank-details"> Bank </Link>
             </Navbar.Brand>
             <Navbar.Brand>
-              <Link to="/add-account"> Add New Account </Link>
+              <Link to="/home/add-account"> Add New Account </Link>
             </Navbar.Brand>
+
             <Navbar.Brand>
-              <Link to="/login"> Login </Link>
+              <Link
+                to="/login"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
+                {" "}
+                Logout{" "}
+              </Link>
             </Navbar.Brand>
           </Navbar.Header>
         </Navbar>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+// import urls from "client-urls" = { accounts:"/home/accounts" }
 const url = "http://localhost:2200/auth/login";
 export default class Login extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ export default class Login extends Component {
       )
       .then(res => {
         localStorage.setItem("session", res.data.key);
+        this.props.history.push("/home/accounts");
       });
   };
 

@@ -15,6 +15,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getAccounts } from "./redux/actions";
 import Login from "./components/login/login";
+import Home from "./components/home/home";
+import { homedir } from "os";
 
 class App extends Component {
   constructor(props) {
@@ -32,11 +34,35 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header />
+         
           <div />
           <div>
             <Switch>
-              <Route key="accounts" path="/accounts" component={AccountsPage} />
+              <Route
+                key="home"
+                path="/home"
+                render={() => {
+                  if (localStorage.getItem("session") != null) {
+                    return <Home />;
+                  } else {
+                    return <Redirect to="/login" />;
+                  }
+                }}
+              />
+
+              <Route key="login" path="/login" component={Login} />
+
+              {/* <Route
+                render={() => {
+                  if (localStorage.getItem("session") != null) {
+                    return <AccountsPage />;
+                  } else {
+                    return <Redirect to="/login" />;
+                  }
+                }}
+                key="accounts"
+                path="/accounts"
+              />
               <Route
                 key="bank-details"
                 path="/bank-details"
@@ -54,7 +80,7 @@ class App extends Component {
                 component={Account}
               />
               <Route key="login" exact={true} path="/login" component={Login} />
-              <Redirect from="/" to="/account" />
+              <Redirect from="/" to="/account" /> */}
             </Switch>
           </div>
           <Snackbar
